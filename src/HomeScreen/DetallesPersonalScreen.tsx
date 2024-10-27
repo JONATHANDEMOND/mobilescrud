@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { Button, Card, Divider, Text, TextInput } from 'react-native-paper'
 import { styles } from '../theme/styles'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { ref, remove, update } from 'firebase/database'
+import { ref, remove, update, onValue } from 'firebase/database';
 import { auth, dbRealTime } from '../config/firebaseConfig'
 
 // interface
@@ -80,17 +80,16 @@ const handleDelteRopa = async()=>{
     
     <Card.Content>
         <Text variant="headlineSmall" style={styles.textStyle}>Detalles Prenda</Text>
-        <TextInput label='Id' mode='outlined' style={styles.inputStyle}
-      onChangeText={(value)=>handleSetValues('id',value)}/>
-      <TextInput label='Nombre' mode='outlined' style={styles.inputStyle}
+       
+      <TextInput label='Nombre' mode='outlined' style={styles.inputStyle} value={fomrEdit.nombre}
       onChangeText={(value)=>handleSetValues('nombre',value)}/>
       <Divider/>
-      <TextInput label='Apellido' mode='outlined' style={styles.inputStyle} 
+      <TextInput label='Apellido' mode='outlined' style={styles.inputStyle} value={fomrEdit.apellido}
       onChangeText={(value)=>handleSetValues('apellido',value)}/>
-      <TextInput label='Cargo' mode='outlined' style={styles.inputStyle}
+      <TextInput label='Cargo' mode='outlined' style={styles.inputStyle} value={fomrEdit.cargo}
       onChangeText={(value)=>handleSetValues('cargo', value)}
       />
-      <TextInput label='Sueldo' mode='outlined' style={styles.inputStyle}
+      <TextInput label='Sueldo' mode='outlined' style={styles.inputStyle} value={fomrEdit.sueldo}
       onChangeText={(value)=>handleSetValues('sueldo', value)}
       keyboardType='numeric'/>
     </Card.Content>
